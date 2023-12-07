@@ -6,8 +6,9 @@ require("dotenv").config();
 const DB = process.env.DB;
 // `mongodb+srv://firasazzebi66:${DB}@cluster0.z3mogai.mongodb.net/beatbones?retryWrites=true&w=majority`
 mongoose
-.connect(
-    "mongodb+srv://BeatBones:Firas134679@beatbones.dlibg6b.mongodb.net/Test?retryWrites=true&w=majority"
+  .connect(
+    "mongodb+srv://BeatBones:Firas134679@beatbones.dlibg6b.mongodb.net/Test?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
   )
   .then(() => console.log("connected to the database"))
   .catch((err) => console.log(err));
