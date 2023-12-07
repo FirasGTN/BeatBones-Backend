@@ -5,12 +5,21 @@ require("dotenv").config();
 
 const DB = process.env.DB;
 
-mongoose
-  .connect(
-    `mongodb+srv://firasazzebi66:${DB}@cluster0.z3mogai.mongodb.net/beatbones?retryWrites=true&w=majority`
-  )
-  .then(() => console.log("connected to the database"))
-  .catch((err) => console.log(err));
+const uri = `mongodb+srv://firasazzebi66:${DB}@cluster0.z3mogai.mongodb.net/beatbones?retryWrites=true&w=majority`;
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Connected to MongoDB Atlas");
+});
+
+// mongoose
+//   .connect(
+//     `mongodb+srv://firasazzebi66:${DB}@cluster0.z3mogai.mongodb.net/beatbones?retryWrites=true&w=majority`
+//   )
+//   .then(() => console.log("connected to the database"))
+//   .catch((err) => console.log(err));
 
 app.use(express.json());
 
