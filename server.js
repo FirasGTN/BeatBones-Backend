@@ -7,7 +7,11 @@ const DB = process.env.DB;
 
 const uri = `mongodb+srv://firasazzebi66:${DB}@cluster0.z3mogai.mongodb.net/beatbones?retryWrites=true&w=majority`;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: false, // Disable SSL
+});
 
 const connection = mongoose.connection;
 connection.once("open", () => {
